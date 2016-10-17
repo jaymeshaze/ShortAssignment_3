@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package creditcard;
 
 import java.io.BufferedReader;
@@ -33,18 +29,20 @@ public class CreditCardValidator implements Serializable{
     private Long userCvv;
     private String result;
 
+    //no-arg constructor
     public CreditCardValidator() {
     }
     
+    //method run when submit button is clicked on index.xhtml
     public void checkCard(){
-        
+        //stores the single credit card record, fields seperated by ","
         String line;
-      
+      //reader to read csv file
         try (BufferedReader br = new BufferedReader(new FileReader("F:\\Computer_Programming\\CreditCardForm\\creditcards.csv"))) {
-            boolean infoFound = false;
-            
+            //loop to read each card, break loop if successful
             while((line = br.readLine()) != null) {
                 String[] cardInfo = line.split(",");
+                //checks each field of a credit card record for validity
                 if(cardInfo[0].toLowerCase().equals( userNameFirst) 
                     && cardInfo[1].equals(userNameLast)
                     && cardInfo[2].equals(userStreetAddress)
@@ -56,14 +54,11 @@ public class CreditCardValidator implements Serializable{
                     && cardInfo[8].equals(userExpYear)
                     && cardInfo[9].equals(userCvv)
                 ){
-                    infoFound = true;
+                    setResult("Confirmed. Credit Card information matches the database.");
+                    break;
+                }else{
+                    setResult("Credit Card information is invalid. Credit Card does not match database.");
                 }
-            }
-            
-            if(infoFound){
-            	setResult("Confirmed. Credit Card information matches the database.");
-            } else {
-                setResult("Credit Card information is invalid. Credit Card does not match database."); 
             }
 
         }catch (IOException e){
