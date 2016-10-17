@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Credit Card Form</title>
+    </h:head>
+    <h:body>
+        <label>Enter Credit Card Information:</label>
+        <br></br>
+        <br></br>
+            <h:form>
+                <label>First Name:</label>
+                <br></br>
+                <h:inputText id="nameFirst" required="true" requiredMessage="First Name Required." size="15" maxlength="15" value="#{creditcard.userNameFirst}"/>
+                <br></br>
+                <label>Last Name:</label>
+                <br></br>
+                    <h:inputText id="nameLast" required="true" requiredMessage="Last NameRequired." size="15" maxlength="15" value="#{creditcard.userNameLast}"/>
+                <br></br>
+                <label>Street Address:</label>
+                <br></br>
+                    <h:inputText id="streetAddress" required="true" requiredMessage="Street Address Required." size="30" maxlength="30" value="#{creditcard.userStreetAddress}" />
+                <br></br>
+                <label>City:</label>
+                <br></br>
+                    <h:inputText id="city" required="true" requiredMessage="City Required." size="15" maxlength="15" value="#{creditcard.userCity}" />
+                <br></br>
+                <label>State:</label>
+                <br></br>    
+                    <h:inputText id="state" required="true" requiredMessage="State Required." size="2" maxlength="2" value="#{creditcard.userState}" converterMessage=" STATE: Please enter the state abbreviation."/>
+                <br></br>
+                <label>Zip Code:</label>
+                <br></br>    
+                    <h:inputText id="zipCode" required="true" requiredMessage="Zip Code Required." size="5" maxlength="5" value="#{creditcard.userZipCode}" converterMessage="ZIP CODE: Please enter digits only."/>
+                <br></br>
+                <label>Card Number:</label>
+                <br></br>
+                    <h:inputText id="cardNumber" required="true" requiredMessage="Card Number Required." size="16" maxlength="16" value="#{creditcard.userCardNumber}" converterMessage="CARD NUMBER: Please enter digits only."/>
+                <br></br>
+                <label>Expiration Month (mm):</label>
+                <br></br>
+                    <h:inputText id="expMonth" required="true" requiredMessage="Expiration Month Required." size="2" maxlength="2" value="#{creditcard.userExpMonth}" converterMessage="EXPPIRATION MONTH: Please enter digits only."/>
+                <br></br>
+                <label>Expiration Year (yy):</label>
+                <br></br>   
+                    <h:inputText id="expYear" required="true" requiredMessage="Expiration Year Required." size="2" maxlength="2" value="#{creditcard.userExpYear}" converterMessage="EXPPIRATION YEAR: Please enter digits only."/>
+                <br></br>
+                <label>CVV Code:</label>
+                <br></br>   
+                    <h:inputText id="cvv" required="true" requiredMessage="CVV Code Required." size="3" maxlength="3" value="#{creditcard.userCvv}" a:placeholder=" " converterMessage="CVV CODE: Please enter digits only."/>
+                <br></br>
+                <br></br>
+                <h:commandButton value="Submit" action="#{creditcard.checkCard()}"/>
+                <br></br>
+                <br></br>
+                <h:outputText value="#{creditcard.result}"/>
+            </h:form>
+    </h:body>
+</html>
+
